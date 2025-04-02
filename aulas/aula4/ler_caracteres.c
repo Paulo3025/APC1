@@ -9,6 +9,11 @@ int main (){
 
      printf("Voce pressionou a tecla '%c'\n", tecla);
      scanf("%c", &tecla); // tecla = 'a';
+     char nome [31];
+     printf("Entre com seu nome:");
+     scanf("%[^\n]s", nome);
+     printf("Voce digitou %s\n", nome);
+
 
 
 
