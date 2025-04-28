@@ -13,7 +13,7 @@ int main (){
     float altura = 9.90;
     printf("Altura : %.2f m\n", altura);
 
-    // declarar umavariavel do tipo float para peso = 999.0 Kg.
+    // declarar uma variavel do tipo float para peso = 999.0 Kg.
     float peso = 999.0;
     printf("Peso : %.2f Kg\n", peso);
 
