@@ -1,20 +1,20 @@
 #include <stdio.h>
-int main(){
-    int dia;
-    printf("Digite um dia da semana:  ");
-    scanf(" %i",& dia);
 
-   switch (dia){
+int main (){
+ int opcao ;
 
-case 1 : printf("Domingo\n"); break;
-case 2 : printf("Segunda-feira\n");break;
-case 3 : printf("terca-feira\n");break;
-case 4 : printf("quarta-feira\n");break;
-case 5 : printf("Quinta-feira\n");break;
-case 6 : printf("\33[34mSexta-feira\n"); break;
-case 7 : printf("\033[31mSabado\n");break ;
+    printf(" MENU PRINCIPAL \n");
+    printf("1 - DIMINGO\n");
+    printf("2 - SEGUNDA-FEIRA \n");
+    printf("3 - TERCA-FEIRA\n");
+    printf("4 - QUARTA-FEIRA\n");
+    printf("5 - QUINTA-FEIRA\n");
+    printf("6 - SEXTA-FEIRA\n");
+    printf("7 - SABADO\n");
+    printf("8 - Opcao invalida, a semana soh tem 7 dias!\n");
 
-default: printf("O dia informado eh invalido! Digite o numero entre 1 e 7.\n");
-}
+    printf("Esolha uma opcao :\n");
+    scanf("% i",&opcao);
+     
     return 0;
 }
