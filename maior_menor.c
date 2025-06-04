@@ -1,40 +1,43 @@
 #include <stdio.h>
 
-// Criação de um programa que leia números inteiros até ler zero,...
-//  e imprima o maior e o menor entre eles.
+int main()
+{
+    // 0 1 2 3 4 5 6 7 8  9
+    int numeros[10]; // Matriz unidimensional = vetor = array = 10 posicoes = | | | | | | | | | |   |
+    numeros[0] = 5;
+    numeros[1] = -2;
+    numeros[2] = 50;
+    numeros[3] = 39;
+    numeros[4] = 3;
+    numeros[5] = 0;
+    numeros[6] = 11;
+    numeros[7] = 33;
+    numeros[8] = 49;
+    numeros[9] = 16;
+int maior = -99999;
 
-int main() {
-  int numero, maior, menor;
+int menor = 99999;
+    printf("Entre com 10 numeros inteiros\n");
+    for (int i = 0; i < 10; i++){
+    
+    printf("Numero %i: ", i + 1);
+    scanf("%i", &numeros[i]);
 
-  // Leitura do primeiro numero
-  printf("Entre com um numero inteiro ( 0 finaliza):\n");
-  scanf("%i", &numero);
-
-  // Se o prmeiro nuemro for 0, o programa termina
-  if (numero == 0) {
-    printf("nenhuma seguencia de numeros foi digitada.\n");
-    return 0;
-  }
-  // Inicializando o maior e o menor com o primeiro
-  maior = menor = numero;
-  // Laço para ler os numeros e encontrar o maior e o menor.
-  while (numero != 0) {
-    // Ler o proximo numero
-    printf("Digite um numero inteiro ( 0 para encerrar):\n");
-    scanf("%i", &numero);
-    // Se o numero nao for zero, atualizar maior e menor
-    if (numero != 0) {
-      if (numero > maior) {
-        maior = numero;
-      }
-      if (numero < menor) {
-        menor = numero;
-      }
+    if (maior < numeros[i])
+    {
+        maior = numeros[i];
     }
-  }
-  // Imprimir o maior e o menor
-  printf("O maior numero eh : %i\n", maior);
-  printf("O menor numero eh :%d\n", menor);
+if (menor>numeros[i]){
+    menor = numeros[i];
+}
 
-  return 0;
+printf("Seus numeros foram : ");
+for(int i=0;i<10;i++){
+    printf("%i",numeros[i]);
+}
+}
+printf("\n");
+printf("O maior numero foi %i e o menor foi %i\n", maior, menor);
+
+return 0;
 }
