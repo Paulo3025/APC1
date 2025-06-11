@@ -1,26 +1,27 @@
-#include <stdio.h>// Inclui a biblioteca de funções de entrada/saída padrão (printf, scanf, etc.). 
-#include <stdlib.h>// Inclui a biblioteca de funções de utilidade geral (malloc, free, etc.). 
-#include <string.h>//Inclui a biblioteca de funções de manipulação de strings (strcpy, strcmp, etc.). 
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <locale.h>
 
-// Este programa em C define uma estrutura Aluno para armazenar o nome, matrícula e notas de um estudante.
-//  Ele permite ao utilizador cadastrar novos alunos, exibir a lista de alunos e sair do programa. 
+/* Este programa, em C , define uma estrutura Aluno para armazenar o nome, matrícula e notas de um estudante.
+Ele permite ao utilizador cadastrar novos alunos, exibir a lista de alunos e sair do programa*/
 
-#define MAX_ALUNOS 100 // Define uma constante para o número máximo de alunos.
+#define MAX_ALUNOS 10 // Define uma constante para o número máximo de alunos.
 #define MAX_NOME 50   //  Define uma constante para o tamanho máximo do nome de um aluno.
 #define MAX_NOTAS 3  //   Define uma constante para o número máximo de notas de um aluno. 
 
 int main() {
   struct Aluno { // Define uma estrutura chamada Aluno para armazenar os dados de um estudante.
     char nome[MAX_NOME];//Um array de caracteres para armazenar o nome do aluno
-   long int matricula; // Um inteiro longo para armazenar a matrícula do aluno
+    unsigned long int matricula; // Um inteiro longo sem sinal para armazenar a matrícula do aluno
     float notas[MAX_NOTAS];// Um array de números de ponto flutuante para armazenar as notas do aluno. 
   };
   struct Aluno alunos[MAX_ALUNOS];// Cria um array de estruturas Aluno para armazenar os dados de todos os alunos.
-  int totalAlunos = 0;// Inicializa uma variável para contar o número total de alunos.
+    int totalAlunos = 0;// Inicializa uma variável para contar o número total de alunos.
 
   int opcao;
 
-  do { // Um loop do-while para exibir o menu principal e processar as opções do utilizador.
+  do { // Um loop do-while para exibir o menu principal e processar as opções disponíveis.
     printf("                                                            \n");
     // Exibe o menu principal com as opções : 1 (Cadastrar), 2 (Listar) e 3 (Sair).
     printf("\t\t\t\t\t================== MENU PRINCIPAL=======================\n");
@@ -34,7 +35,7 @@ int main() {
     
 
     if (opcao == 1) {//Se a opção for 1 (Cadastrar), chama a função para cadastrar um novo aluno.
-      if (totalAlunos >= MAX_ALUNOS) {// Se for mais de 100 estudantes exibir a mensagem:LIMITE DE ESTUDANTES ATINGIDO! 
+      if (totalAlunos >= MAX_ALUNOS) {// Se for mais de 10 estudantes exibir a mensagem:LIMITE DE ESTUDANTES ATINGIDO! 
         printf("\n\t\t\t\t\t\t\tLIMITE DE ESTUDANTES ATINGIDO!\n");
         continue;//interrompe a iteração atual e inicia a próxima iteração do laço onde se encontra.
       }
@@ -43,13 +44,15 @@ int main() {
       printf("\t\t\t\t\tDIGITE O NOME DO ESTUDANTE:  ");
       fgets(alunos[totalAlunos].nome, MAX_NOME, stdin);//ler uma linha de texto de um fluxo 
       // (como um arquivo ou a entrada padrão) e armazená-la em uma string. 
-    //stdin dispositivo de entrada padrão (geralmente o teclado) 
-      alunos[totalAlunos].nome[strcspn(alunos[totalAlunos].nome, "\n")] = 0;
+    //stdin dispositivo de entrada padrão via teclado, nesse caso.
+     
 
       printf("\t\t\t\t\tDIGITE A MATRICULA (NUMERO INTEIRO): ");
-      while (scanf("%ld", &alunos[totalAlunos].matricula) != 1) {
+      while (scanf("%u", &alunos[totalAlunos].matricula) != 1) {// Verifica se a leitura de scanf é verdade e retorna 1,
+        // gravando o nome do estudante , se for !=1 , imprime : MATRICULA INVALIDA. 
         printf("\t\t\t\t\tMATRICULA INVALIDA. DIGITE NOVAMENTE :");
         while (getchar() != '\n'); // Limpar buffer
+        printf("\n");
       }
       for (int i = 0; i < MAX_NOTAS; i++) {
         do {
@@ -64,7 +67,8 @@ int main() {
         } while (1);
       }
       totalAlunos++;
-      printf("\n\n\n\n\t\t\t\t\t\t\033[0;32mESTUDANTE %d CADASTRADO COM  SUCESSO!\n");
+
+      printf("\n\n\n\n\t\t\t\t\t\t\033[0;32mESTUDANTE %d CADASTRADO COM  SUCESSO!\n",totalAlunos);
 
     } else if (opcao == 2) { // Se a opção for 2 (Listar), chama a função para listar os alunos cadastrados.
       if (totalAlunos == 0) {
@@ -72,7 +76,7 @@ int main() {
       } else {
         printf("\n\t\t\t\t ===================== LISTA DE ESTUDANTES ====================\n\n");
         for (int i = 0 ; i < totalAlunos;i++ ){
-        printf("\t\t\t\t======== ESTUDANTE %d =======\n", i + 1);
+        printf("\t\t\t\t                ======== ESTUDANTE %d =======\n", i + 1);
         printf("\t\t\t\tNOME ======>: %s\n", alunos[i].nome);
         printf("\t\t\t\tMATRICULA =>: %li\n",alunos[i].matricula);
         for ( int j = 0; j < 3; j++){
@@ -82,13 +86,13 @@ int main() {
       }
     }
   }else if (opcao == 3){//Se a opção for 3 (Sair), o loop do menu principal é interrompido e o programa termina.
-    printf("\n\t\t\t\tENCERRANDO O PROGRAMA.\n");
+    printf("\n\t\t\t\tENCERRANDO O PROGRAMA! ATE A PROXIMA.\n");
   }else {
-    printf("\n\t\t\t\tOPCAO INVALIDA.TENTE NOVAMENTE.\n");
+    printf("\n\t\t\t\tOPCAO INVALIDA!!! TENTE NOVAMENTE ( ESCOLHA 1 , 2 OU 3).\n");
     while (getchar() != '\n');// Limpar o buffer
   }
 } while (opcao != 3);
 
-
   return 0;
+  setlocale (LC_ALL,"Portuguese");
 }
