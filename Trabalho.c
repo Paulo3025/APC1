@@ -37,7 +37,7 @@ int main() {
     if (opcao == 1) {//Se a opção for 1 (Cadastrar), chama a função para cadastrar um novo aluno.
       if (totalAlunos >= MAX_ALUNOS) {// Se for mais de 10 estudantes exibir a mensagem:LIMITE DE ESTUDANTES ATINGIDO! 
         printf("\n\t\t\t\t\t\t\tLIMITE DE ESTUDANTES ATINGIDO!\n");
-        continue;//interrompe a iteração atual e inicia a próxima iteração do laço onde se encontra.
+        continue;//interrompe a iteração atual e inicia a próxima iteração do laço.
       }
 
       while (getchar() != '\n'); // Limpar buffer
