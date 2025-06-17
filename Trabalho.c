@@ -43,7 +43,7 @@ int main() {
       while (getchar() != '\n'); // Limpar buffer
       printf("\t\t\t\t\tDIGITE O NOME DO ESTUDANTE:  ");
       fgets(alunos[totalAlunos].nome, MAX_NOME, stdin);//ler uma linha de texto de um fluxo 
-      // (como um arquivo ou a entrada padrão) e armazená-la em uma string. 
+      //  e armazená-la em uma string. 
     //stdin dispositivo de entrada padrão via teclado, nesse caso.
      
 
