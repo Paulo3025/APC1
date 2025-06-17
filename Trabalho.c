@@ -13,7 +13,7 @@ Ele permite ao utilizador cadastrar novos alunos, exibir a lista de alunos e sai
 int main() {
   struct Aluno { // Define uma estrutura chamada Aluno para armazenar os dados de um estudante.
     char nome[MAX_NOME];//Um array de caracteres para armazenar o nome do aluno
-    unsigned long int matricula; // Um inteiro longo sem sinal para armazenar a matrícula do aluno
+    long int matricula; // Um inteiro longo para armazenar a matrícula do aluno
     float notas[MAX_NOTAS];// Um array de números de ponto flutuante para armazenar as notas do aluno. 
   };
   struct Aluno alunos[MAX_ALUNOS];// Cria um array de estruturas Aluno para armazenar os dados de todos os alunos.
