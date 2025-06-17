@@ -52,7 +52,7 @@ int main() {
         // gravando o nome do estudante , se for !=1 , imprime : MATRICULA INVALIDA. 
         printf("\t\t\t\t\tMATRICULA INVALIDA. DIGITE NOVAMENTE :");
         while (getchar() != '\n'); // Limpar buffer
-        printf("\n");
+    
       }
       for (int i = 0; i < MAX_NOTAS; i++) {
         do {
